@@ -60,10 +60,12 @@
         android:layout_margin="@dimen/medium_margin"
         android:hint="@string/input_attack_hint"
         android:textColorHint="@color/colorAccent"
+        app:hintTextAppearance="@style/AppTheme.TextAppearance.Label"
         app:hintTextColor="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@+id/sum"
         app:startIconContentDescription="description"
-        app:startIconDrawable="@drawable/ic_dagger">
+        app:startIconDrawable="@drawable/ic_dagger"
+        app:suffixTextAppearance="@style/AppTheme.TextAppearance.Suffix">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -71,7 +73,7 @@
             android:digits="0123456789"
             android:inputType="number"
             android:maxLength="3"
-            android:textSize="22sp" />
+            android:textSize="@dimen/input_size" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,10 +84,12 @@
         android:layout_margin="@dimen/medium_margin"
         android:hint="@string/input_awakened_attack_hint"
         android:textColorHint="@color/colorAccent"
+        app:hintTextAppearance="@style/AppTheme.TextAppearance.Label"
         app:hintTextColor="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@+id/combinedAttackPower"
         app:startIconContentDescription="description"
-        app:startIconDrawable="@drawable/ic_sword">
+        app:startIconDrawable="@drawable/ic_sword"
+        app:suffixTextAppearance="@style/AppTheme.TextAppearance.Suffix">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -93,7 +97,7 @@
             android:digits="0123456789"
             android:inputType="number"
             android:maxLength="3"
-            android:textSize="22sp" />
+            android:textSize="@dimen/input_size" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,11 +108,12 @@
         android:layout_margin="@dimen/medium_margin"
         android:hint="@string/input_defense_hint"
         android:textColorHint="@color/colorAccent"
+        app:hintTextAppearance="@style/AppTheme.TextAppearance.Label"
         app:hintTextColor="@color/colorAccent"
-        app:suffixTextAppearance="@style/TextAppearance.MaterialComponents.Headline4"
         app:layout_constraintTop_toBottomOf="@+id/awakenedAttackPower"
         app:startIconContentDescription="description"
-        app:startIconDrawable="@drawable/ic_shield">
+        app:startIconDrawable="@drawable/ic_shield"
+        app:suffixTextAppearance="@style/AppTheme.TextAppearance.Suffix">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -116,7 +121,7 @@
             android:digits="0123456789"
             android:inputType="number"
             android:maxLength="3"
-            android:textSize="22sp" />
+            android:textSize="@dimen/input_size" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
