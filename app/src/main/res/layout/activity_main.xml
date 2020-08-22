@@ -9,7 +9,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/medium_margin"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,46 +18,60 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
-            android:layout_weight="0.5"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_weight="0.5"
+            android:paddingStart="@dimen/small_margin"
+            android:paddingEnd="@dimen/small_margin"
+            android:text="@string/gs_prefix"
             android:textAlignment="textEnd"
-            android:layout_marginTop="8dp"
-            android:text="Your GS: "
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             tools:ignore="RtlCompat" />
 
         <TextView
             android:id="@+id/gearScore"
             android:layout_width="wrap_content"
-            android:layout_weight="0.5"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            tools:text="500"
+            android:layout_weight="0.5"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
-            android:theme="@style/TextViewGearScore" />
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            tools:text="500" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/medium_margin"
+        android:text="@string/gs_calculation_sum"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/combinedAttackPower"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Attack"
+        android:layout_margin="@dimen/medium_margin"
+        android:hint="@string/input_attack_hint"
         android:textColorHint="@color/colorAccent"
         app:hintTextColor="@color/colorAccent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/sum"
         app:startIconContentDescription="description"
-        app:startIconDrawable="@drawable/ic_dagger"
-        tools:layout_editor_absoluteX="10dp">
+        app:startIconDrawable="@drawable/ic_dagger">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:digits="0123456789"
             android:inputType="number"
-            android:maxLength="3" />
+            android:maxLength="3"
+            android:textSize="22sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,21 +79,21 @@
         android:id="@+id/awakenedAttackPower"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Awakened Attack"
+        android:layout_margin="@dimen/medium_margin"
+        android:hint="@string/input_awakened_attack_hint"
         android:textColorHint="@color/colorAccent"
         app:hintTextColor="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@+id/combinedAttackPower"
         app:startIconContentDescription="description"
-        app:startIconDrawable="@drawable/ic_sword"
-        tools:layout_editor_absoluteX="10dp">
+        app:startIconDrawable="@drawable/ic_sword">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:digits="0123456789"
             android:inputType="number"
-            android:maxLength="3" />
+            android:maxLength="3"
+            android:textSize="22sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,11 +101,11 @@
         android:id="@+id/defensePower"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Defense"
+        android:layout_margin="@dimen/medium_margin"
+        android:hint="@string/input_defense_hint"
         android:textColorHint="@color/colorAccent"
         app:hintTextColor="@color/colorAccent"
-
+        app:suffixTextAppearance="@style/TextAppearance.MaterialComponents.Headline4"
         app:layout_constraintTop_toBottomOf="@+id/awakenedAttackPower"
         app:startIconContentDescription="description"
         app:startIconDrawable="@drawable/ic_shield">
@@ -101,7 +115,8 @@
             android:layout_height="wrap_content"
             android:digits="0123456789"
             android:inputType="number"
-            android:maxLength="3" />
+            android:maxLength="3"
+            android:textSize="22sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,11 +125,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/medium_margin"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/defensePower"
-        tools:text="well done" />
-
+        tools:text="Already better, but there is something to strive for =)" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

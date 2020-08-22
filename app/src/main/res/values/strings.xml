@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">BDO Gear Score Calculator</string>
+    <string name="gs_prefix">Your GS:</string>
+    <string name="gs_calculation_sum">GS = ((Attack + awa.Attack) / 2) + Defense</string>
+    <string name="input_attack_hint">Attack</string>
+    <string name="input_awakened_attack_hint">Awakened Attack</string>
+    <string name="input_defense_hint">Defense</string>
+    <string name="gs_low">Don\'t worry too much, with a little dedication you will raise your gearscore soon!</string>
+    <string name="gs_medium">Already better, but there is room for improvement :)</string>
+    <string name="gs_high">Good gearscore</string>
+    <string name="gs_endgame">Ohh my, nice!</string>
 </resources>

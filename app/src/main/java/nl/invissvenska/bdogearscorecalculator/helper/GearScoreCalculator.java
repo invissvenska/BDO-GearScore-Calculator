@@ -2,10 +2,11 @@ package nl.invissvenska.bdogearscorecalculator.helper;
 
 import android.widget.TextView;
 
-import java.util.HashMap;
-import java.util.Map;
+import nl.invissvenska.bdogearscorecalculator.R;
 
 public class GearScoreCalculator {
+
+    private static final String DEFAULT_GS = "0";
 
     private Integer combinedAttackPower;
     private Integer awakenedAttackPower;
@@ -13,12 +14,12 @@ public class GearScoreCalculator {
     private TextView gearScoreLabel;
     private TextView gearScoreSubLabel;
 
-    private Map<Integer, String> subTitles = new HashMap<Integer, String>() {{
-        put(499, "Oh, do not despair, someday, with due diligence, you raise the gearscore =)");
-        put(539, "Already better, but there is something to strive for =)");
-        put(579, "Good gearscore");
-        put(999, "Ohh my, nice!");
-    }};
+    private int[][] labels = {
+            {0, 499, R.string.gs_low},
+            {500, 539, R.string.gs_medium},
+            {540, 579, R.string.gs_high},
+            {580, 999, R.string.gs_endgame}
+    };
 
     public void setCombinedAttackPower(Integer combinedAttackPower) {
         this.combinedAttackPower = combinedAttackPower;
@@ -35,27 +36,25 @@ public class GearScoreCalculator {
         calculate();
     }
 
-    public GearScoreCalculator setGearScoreLabel(TextView gearScoreLabel) {
+    public void setGearScoreLabel(TextView gearScoreLabel) {
         this.gearScoreLabel = gearScoreLabel;
-        return this;
+        this.gearScoreLabel.setText(DEFAULT_GS);
     }
 
-    public GearScoreCalculator setGearScoreSubLabel(TextView gearScoreSubLabel) {
+    public void setGearScoreSubLabel(TextView gearScoreSubLabel) {
         this.gearScoreSubLabel = gearScoreSubLabel;
-        return this;
     }
 
     public void calculate() {
         if (combinedAttackPower == null || awakenedAttackPower == null || defensePower == null) {
-            gearScoreLabel.setText("Fill in all fields");
+            gearScoreLabel.setText(DEFAULT_GS);
         } else {
-            Integer gearScore = ((combinedAttackPower + awakenedAttackPower) / 2) + defensePower;
-            gearScoreLabel.setText("" + gearScore);
+            int gearScore = ((combinedAttackPower + awakenedAttackPower) / 2) + defensePower;
+            gearScoreLabel.setText(String.valueOf(gearScore));
 
-            for (Map.Entry<Integer, String> entry : subTitles.entrySet()) {
-                if (gearScore <= entry.getKey()) {
-                    gearScoreSubLabel.setText(entry.getValue());
-                    return;
+            for (int[] label : labels) {
+                if (gearScore >= label[0] && gearScore <= label[1]) {
+                    gearScoreSubLabel.setText(label[2]);
                 }
             }
         }

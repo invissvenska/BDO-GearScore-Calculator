@@ -33,9 +33,9 @@ public class DefensePowerCalculator {
     public static Integer calculate(Integer attack) {
         int currentDpBonus = 0;
 
-        for (int i = 0; i < dp.length; i++) {
-            if (attack >= dp[i][0] && attack <= dp[i][1]) {
-                currentDpBonus = dp[i][2];
+        for (int[] ints : dp) {
+            if (attack >= ints[0] && attack <= ints[1]) {
+                currentDpBonus = ints[2];
                 break;
             }
         }
