@@ -2,15 +2,18 @@ package nl.invissvenska.bdogearscorecalculator.helper;
 
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import nl.invissvenska.bdogearscorecalculator.R;
 
 public class GearScoreCalculator {
 
     private static final String DEFAULT_GS = "0";
 
-    private Integer combinedAttackPower;
-    private Integer awakenedAttackPower;
-    private Integer defensePower;
+    private BigDecimal combinedAttackPower;
+    private BigDecimal awakenedAttackPower;
+    private BigDecimal defensePower;
     private TextView gearScoreLabel;
     private TextView gearScoreSubLabel;
 
@@ -22,17 +25,17 @@ public class GearScoreCalculator {
     };
 
     public void setCombinedAttackPower(Integer combinedAttackPower) {
-        this.combinedAttackPower = combinedAttackPower;
+        this.combinedAttackPower = new BigDecimal(combinedAttackPower);
         calculate();
     }
 
     public void setAwakenedAttackPower(Integer awakenedAttackPower) {
-        this.awakenedAttackPower = awakenedAttackPower;
+        this.awakenedAttackPower = new BigDecimal(awakenedAttackPower);
         calculate();
     }
 
     public void setDefensePower(Integer defensePower) {
-        this.defensePower = defensePower;
+        this.defensePower = new BigDecimal(defensePower);
         calculate();
     }
 
@@ -49,11 +52,12 @@ public class GearScoreCalculator {
         if (combinedAttackPower == null || awakenedAttackPower == null || defensePower == null) {
             gearScoreLabel.setText(DEFAULT_GS);
         } else {
-            int gearScore = ((combinedAttackPower + awakenedAttackPower) / 2) + defensePower;
-            gearScoreLabel.setText(String.valueOf(gearScore));
+
+            BigDecimal gearScore = (combinedAttackPower.add(awakenedAttackPower)).divide(new BigDecimal(2)).add(defensePower);
+            gearScoreLabel.setText(String.valueOf(gearScore.setScale(0, RoundingMode.UP)));
 
             for (int[] label : labels) {
-                if (gearScore >= label[0] && gearScore <= label[1]) {
+                if (gearScore.intValue() >= label[0] && gearScore.intValue() <= label[1]) {
                     gearScoreSubLabel.setText(label[2]);
                 }
             }
