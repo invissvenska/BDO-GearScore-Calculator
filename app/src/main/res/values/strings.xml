@@ -9,4 +9,7 @@
     <string name="gs_medium">Already better, but there is room for improvement :)</string>
     <string name="gs_high">Good gearscore</string>
     <string name="gs_endgame">Ohh my, nice!</string>
+    <string name="bottom_nav_label1">Calculator</string>
+    <string name="bottom_nav_label2">Brackets</string>
+
 </resources>
