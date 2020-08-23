@@ -4,12 +4,12 @@
         android:id="@+id/action_calculator"
         android:title="@string/bottom_nav_label1"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_sword"
+        android:icon="@drawable/ic_calculator"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_brackets"
         android:title="@string/bottom_nav_label2"
         android:orderInCategory="200"
-        android:icon="@drawable/ic_dagger"
+        android:icon="@drawable/ic_brackets"
         app:showAsAction="ifRoom" />
 </menu>

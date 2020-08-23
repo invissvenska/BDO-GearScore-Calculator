@@ -25,24 +25,10 @@ public class BracketFragment extends Fragment {
     private DiscreteScrollView combinedApBrackets;
     private DiscreteScrollView defenseDpBrackets;
 
-//    private String title;
 
     public BracketFragment() {
         //keep default constructor
     }
-
-//    private BracketFragment(String title) {
-//        this.title = title;
-//    }
-//
-//    public static BracketFragment newInstance(String title) {
-//        return new BracketFragment(title);
-//    }
-//
-//    @Override
-//    protected String getTitle() {
-//        return title;
-//    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

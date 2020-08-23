@@ -32,43 +32,38 @@ public class CalculatorFragment extends Fragment {
 
     private static final String INPUT_COMBINED_ATTACK = "COMBINED_ATTACK";
 
-//    private String title;
 
     public CalculatorFragment() {
         //keep default constructor
     }
 
-//    private CalculatorFragment(String title) {
-//        this.title = title;
-//    }
-//
-//    public static CalculatorFragment newInstance(String title) {
-//        return new CalculatorFragment(title);
-//    }
-//
-//    @Override
-//    protected String getTitle() {
-//        return title;
-//    }
-
-
     @Override
     public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putString(INPUT_COMBINED_ATTACK, "200");
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        onRestoreInstanceState(savedInstanceState);
+    }
+
+    private void onRestoreInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
-            Log.d("BDO", "restored value: " + savedInstanceState.getString(INPUT_COMBINED_ATTACK));
+            String SomeText = savedInstanceState.getString(INPUT_COMBINED_ATTACK);
+            Log.d("BDO", "restored value: " + SomeText);
         }
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        setRetainInstance(true);
+        if (savedInstanceState != null) {
+            String SomeText = savedInstanceState.getString(INPUT_COMBINED_ATTACK);
+            Log.d("BDO", "restored value: " + SomeText);
+        }
     }
 
     @Nullable
@@ -84,7 +79,15 @@ public class CalculatorFragment extends Fragment {
         defensePower = view.findViewById(R.id.defensePower);
         setInputFields();
 
+        onRestoreInstanceState(savedInstanceState);
+
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        onRestoreInstanceState(savedInstanceState);
     }
 
     private void setInputFields() {

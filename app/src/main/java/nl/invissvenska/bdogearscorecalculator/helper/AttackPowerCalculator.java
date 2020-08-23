@@ -53,6 +53,8 @@ public class AttackPowerCalculator {
         for (int[] ints : ap) {
             brackets.add(new BracketItem(ints[0], ints[1], ints[2], "+", ""));
         }
+        //remove first bracket
+        brackets.remove(0);
         return brackets;
     }
 
