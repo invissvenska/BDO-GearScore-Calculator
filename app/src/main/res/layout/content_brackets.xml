@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:baselineAligned="false"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -18,7 +19,7 @@
             android:layout_marginTop="@dimen/medium_margin"
             android:layout_marginBottom="@dimen/small_margin"
             android:gravity="center_horizontal"
-            android:text="Attack"
+            android:text="@string/bracket_label_attack"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
         <com.yarolegovich.discretescrollview.DiscreteScrollView
@@ -42,7 +43,7 @@
             android:layout_marginTop="@dimen/medium_margin"
             android:layout_marginBottom="@dimen/small_margin"
             android:gravity="center_horizontal"
-            android:text="Defense"
+            android:text="@string/bracket_label_defense"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
         <com.yarolegovich.discretescrollview.DiscreteScrollView

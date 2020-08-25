@@ -1,5 +1,6 @@
 package nl.invissvenska.bdogearscorecalculator.scroll;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,12 +33,13 @@ public class BracketAdapter extends RecyclerView.Adapter<BracketViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull BracketViewHolder holder, int position) {
         final BracketItem item = brackets.get(position);
-        if(item.getTo().equals(999)){
-            holder.fromTo.setText(item.getFrom() + "+");
+        Context context = holder.fromTo.getContext();
+        if (item.getTo().equals(999)) {
+            holder.fromTo.setText(context.getString(R.string.bracket_value_max, item.getFrom()));
         } else {
-            holder.fromTo.setText(item.getFrom() + " - " + item.getTo());
+            holder.fromTo.setText(context.getString(R.string.bracket_value, item.getFrom(), item.getTo()));
         }
-        holder.bonus.setText(item.getPrefix() + item.getBonus() + item.getSuffix());
+        holder.bonus.setText(context.getString(R.string.bracket_bonus, item.getPrefix(), item.getBonus(), item.getSuffix()));
     }
 
     @Override

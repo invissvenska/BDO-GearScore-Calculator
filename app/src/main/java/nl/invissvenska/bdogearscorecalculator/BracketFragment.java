@@ -21,10 +21,13 @@ public class BracketFragment extends Fragment {
 
     private static final Integer ITEM_COUNT = 15;
     private static final Integer FLING_THRESHOLD = 1000;
+    private static final Integer DEFAULT_SELECTED_INDEX = 3;
 
     private DiscreteScrollView combinedApBrackets;
     private DiscreteScrollView defenseDpBrackets;
 
+    private Integer apSelectedIndex;
+    private Integer dpSelectedIndex;
 
     public BracketFragment() {
         //keep default constructor
@@ -47,6 +50,28 @@ public class BracketFragment extends Fragment {
         setDefenseDpBrackets();
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (apSelectedIndex != null) {
+            combinedApBrackets.scrollToPosition(apSelectedIndex);
+        } else {
+            combinedApBrackets.scrollToPosition(DEFAULT_SELECTED_INDEX);
+        }
+        if (dpSelectedIndex != null) {
+            defenseDpBrackets.scrollToPosition(dpSelectedIndex);
+        } else {
+            defenseDpBrackets.scrollToPosition(DEFAULT_SELECTED_INDEX);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        apSelectedIndex = combinedApBrackets.getCurrentItem();
+        dpSelectedIndex = defenseDpBrackets.getCurrentItem();
     }
 
     private void setCombinedApBrackets() {
