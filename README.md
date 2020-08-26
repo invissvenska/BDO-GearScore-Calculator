@@ -1,1 +1,2 @@
-# BDO-GearScore-Calculator
+# BDO Gear Score Calculator
+
