@@ -1,142 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <FrameLayout
+        android:id="@+id/nav_host_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/medium_margin"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="65dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_gravity="bottom"
+        app:itemIconTint="@drawable/bottom_navigation_colors"
+        app:itemTextColor="@drawable/bottom_navigation_colors"
+        app:labelVisibilityMode="selected"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="0.5"
-            android:paddingStart="@dimen/small_margin"
-            android:paddingEnd="@dimen/small_margin"
-            android:text="@string/gs_prefix"
-            android:textAlignment="textEnd"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-            tools:ignore="RtlCompat" />
-
-        <TextView
-            android:id="@+id/gearScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0.5"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold"
-            tools:text="500" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/sum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="@dimen/medium_margin"
-        android:text="@string/gs_calculation_sum"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/combinedAttackPower"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/medium_margin"
-        android:hint="@string/input_attack_hint"
-        android:textColorHint="@color/colorAccent"
-        app:hintTextAppearance="@style/AppTheme.TextAppearance.Label"
-        app:hintTextColor="@color/colorAccent"
-        app:layout_constraintTop_toBottomOf="@+id/sum"
-        app:startIconContentDescription="description"
-        app:startIconDrawable="@drawable/ic_dagger"
-        app:suffixTextAppearance="@style/AppTheme.TextAppearance.Suffix">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:digits="0123456789"
-            android:inputType="number"
-            android:maxLength="3"
-            android:textSize="@dimen/input_size" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/awakenedAttackPower"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/medium_margin"
-        android:hint="@string/input_awakened_attack_hint"
-        android:textColorHint="@color/colorAccent"
-        app:hintTextAppearance="@style/AppTheme.TextAppearance.Label"
-        app:hintTextColor="@color/colorAccent"
-        app:layout_constraintTop_toBottomOf="@+id/combinedAttackPower"
-        app:startIconContentDescription="description"
-        app:startIconDrawable="@drawable/ic_sword"
-        app:suffixTextAppearance="@style/AppTheme.TextAppearance.Suffix">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:digits="0123456789"
-            android:inputType="number"
-            android:maxLength="3"
-            android:textSize="@dimen/input_size" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/defensePower"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/medium_margin"
-        android:hint="@string/input_defense_hint"
-        android:textColorHint="@color/colorAccent"
-        app:hintTextAppearance="@style/AppTheme.TextAppearance.Label"
-        app:hintTextColor="@color/colorAccent"
-        app:layout_constraintTop_toBottomOf="@+id/awakenedAttackPower"
-        app:startIconContentDescription="description"
-        app:startIconDrawable="@drawable/ic_shield"
-        app:suffixTextAppearance="@style/AppTheme.TextAppearance.Suffix">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:digits="0123456789"
-            android:inputType="number"
-            android:maxLength="3"
-            android:textSize="@dimen/input_size" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/gearScoreSub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/medium_margin"
-        android:gravity="center_horizontal"
-        android:padding="@dimen/medium_margin"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/defensePower"
-        tools:text="Already better, but there is something to strive for =)" />
+        app:layout_constraintTop_toBottomOf="@+id/nav_host_fragment"
+        app:menu="@menu/bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

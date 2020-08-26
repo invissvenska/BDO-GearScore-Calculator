@@ -1,97 +1,62 @@
 package nl.invissvenska.bdogearscorecalculator;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.widget.TextView;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import com.google.android.material.textfield.TextInputLayout;
-
-import nl.invissvenska.bdogearscorecalculator.helper.AttackPowerCalculator;
-import nl.invissvenska.bdogearscorecalculator.helper.DefensePowerCalculator;
-import nl.invissvenska.bdogearscorecalculator.helper.GearScoreCalculator;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextInputLayout combinedAttackPower;
-    TextInputLayout awakenedAttackPower;
-    TextInputLayout defensePower;
+    private CalculatorFragment calculatorFragment;
+    private BracketFragment bracketFragment;
 
-    GearScoreCalculator calculator;
+    private static final String CALCULATOR = "Calculator";
+    private static final String BRACKET = "Brackets";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        calculator = new GearScoreCalculator();
-        calculator.setGearScoreLabel((TextView)findViewById(R.id.gearScore));
-        calculator.setGearScoreSubLabel((TextView)findViewById(R.id.gearScoreSub));
+        calculatorFragment = (CalculatorFragment) getSupportFragmentManager().findFragmentByTag(CALCULATOR);
+        bracketFragment = (BracketFragment) getSupportFragmentManager().findFragmentByTag(BRACKET);
 
-        combinedAttackPower = findViewById(R.id.combinedAttackPower);
-        combinedAttackPower.getEditText().addTextChangedListener(attackTextWatcher);
+        if (calculatorFragment == null || bracketFragment == null) {
+            calculatorFragment = new CalculatorFragment();
+            bracketFragment = new BracketFragment();
+            setFragment(calculatorFragment, CALCULATOR);
+        }
 
-        awakenedAttackPower = findViewById(R.id.awakenedAttackPower);
-        awakenedAttackPower.getEditText().addTextChangedListener(attackTextWatcher);
+        BottomNavigationView navigationView = findViewById(R.id.bottom_nav);
+        navigationView.setSelectedItemId(R.id.action_calculator);
+        navigationView.setOnNavigationItemSelectedListener((@NonNull MenuItem item) -> {
+            int id = item.getItemId();
 
-        defensePower = findViewById(R.id.defensePower);
-        defensePower.getEditText().addTextChangedListener(defenseTextWatcher);
+            if (id == R.id.action_calculator) {
+                setFragment(calculatorFragment, CALCULATOR);
+                return true;
+            }
+            if (id == R.id.action_brackets) {
+                setFragment(bracketFragment, BRACKET);
+                return true;
+            }
+            return false;
+        });
     }
 
-    private TextWatcher attackTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        }
+    private void setFragment(Fragment fragment, String tag) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.nav_host_fragment, fragment, tag)
+                .commit();
+    }
 
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            Integer bonus = 0;
-            Integer value = 0;
-            try {
-                value = Integer.parseInt(s.toString());
-                bonus = AttackPowerCalculator.calculate(value);
-            } catch (NumberFormatException e) {
-                Log.e("BDO", e.getMessage());
-            } finally {
-                if (combinedAttackPower.getEditText().getText().hashCode() == s.hashCode()) {
-                    combinedAttackPower.setSuffixText("+" + bonus);
-                    calculator.setCombinedAttackPower(value);
-                } else if (awakenedAttackPower.getEditText().getText().hashCode() == s.hashCode()) {
-                    awakenedAttackPower.setSuffixText("+" + bonus);
-                    calculator.setAwakenedAttackPower(value);
-                }
-            }
-        }
-    };
-
-    private TextWatcher defenseTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            Integer bonus = 0;
-            Integer value = 0;
-            try {value = Integer.parseInt(s.toString());
-                bonus = DefensePowerCalculator.calculate(value);
-            } catch (NumberFormatException e) {
-                Log.e("BDO", e.getMessage());
-            } finally {
-                defensePower.setSuffixText("+" + bonus + "%");
-                calculator.setDefensePower(value);
-            }
-        }
-    };
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }

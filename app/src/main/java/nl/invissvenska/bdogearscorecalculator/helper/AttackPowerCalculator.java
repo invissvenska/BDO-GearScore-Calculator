@@ -1,5 +1,10 @@
 package nl.invissvenska.bdogearscorecalculator.helper;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import nl.invissvenska.bdogearscorecalculator.scroll.BracketItem;
+
 public class AttackPowerCalculator {
 
     private AttackPowerCalculator() {
@@ -34,18 +39,31 @@ public class AttackPowerCalculator {
     };
 
     public static Integer calculate(Integer attack) {
-        int currentBracket = 0;
+        int currentBracket = getIndexByAP(attack);
         int currentApBonus = 0;
-
-        for (int i = 0; i < ap.length; i++) {
-            if (attack >= ap[i][0] && attack <= ap[i][1]) {
-                currentBracket = i;
-            }
-        }
 
         for (int i = 0; i <= currentBracket; i++) {
             currentApBonus += ap[i][2];
         }
         return currentApBonus;
+    }
+
+    public static List<BracketItem> getBrackets() {
+        List<BracketItem> brackets = new ArrayList<>();
+        for (int[] ints : ap) {
+            brackets.add(new BracketItem(ints[0], ints[1], ints[2], "+", ""));
+        }
+        //remove first bracket
+        brackets.remove(0);
+        return brackets;
+    }
+
+    public static Integer getIndexByAP(Integer attack) {
+        for (int i = 0; i < ap.length; i++) {
+            if (attack >= ap[i][0] && attack <= ap[i][1]) {
+                return i;
+            }
+        }
+        return 0;
     }
 }
