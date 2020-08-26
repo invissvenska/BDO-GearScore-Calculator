@@ -5,9 +5,9 @@
     <string name="input_attack_hint">Attack</string>
     <string name="input_awakened_attack_hint">Awakened Attack</string>
     <string name="input_defense_hint">Defense</string>
-    <string name="gs_low">Don\'t worry too much, with a little dedication you will raise your gearscore soon!</string>
+    <string name="gs_low">Don\'t worry too much, with a little dedication you will raise your gear score soon!</string>
     <string name="gs_medium">Already better, but there is room for improvement :)</string>
-    <string name="gs_high">Good gearscore</string>
+    <string name="gs_high">Good gear score</string>
     <string name="gs_endgame">Ohh my, nice!</string>
     <string name="bottom_nav_label1">Calculator</string>
     <string name="bottom_nav_label2">Brackets</string>
