@@ -22,13 +22,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        boolean dualPane = findViewById(R.id.dual_pane) != null;
+        if (dualPane) {
+            handleBigScreen();
+        } else {
+            handleNormalScreen();
+        }
+    }
+
+    private void handleBigScreen() {
+        setFragment(new CalculatorFragment(), R.id.calculator, CALCULATOR);
+        setFragment(new BracketFragment(), R.id.brackets, BRACKET);
+    }
+
+    private void handleNormalScreen() {
         calculatorFragment = (CalculatorFragment) getSupportFragmentManager().findFragmentByTag(CALCULATOR);
         bracketFragment = (BracketFragment) getSupportFragmentManager().findFragmentByTag(BRACKET);
 
         if (calculatorFragment == null || bracketFragment == null) {
             calculatorFragment = new CalculatorFragment();
             bracketFragment = new BracketFragment();
-            setFragment(calculatorFragment, CALCULATOR);
+            setFragment(calculatorFragment, R.id.nav_host_fragment, CALCULATOR);
         }
 
         BottomNavigationView navigationView = findViewById(R.id.bottom_nav);
@@ -37,21 +51,21 @@ public class MainActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.action_calculator) {
-                setFragment(calculatorFragment, CALCULATOR);
+                setFragment(calculatorFragment, R.id.nav_host_fragment, CALCULATOR);
                 return true;
             }
             if (id == R.id.action_brackets) {
-                setFragment(bracketFragment, BRACKET);
+                setFragment(bracketFragment, R.id.nav_host_fragment, BRACKET);
                 return true;
             }
             return false;
         });
     }
 
-    private void setFragment(Fragment fragment, String tag) {
+    private void setFragment(Fragment fragment, int container, String tag) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.nav_host_fragment, fragment, tag)
+                .replace(container, fragment, tag)
                 .commit();
     }
 
