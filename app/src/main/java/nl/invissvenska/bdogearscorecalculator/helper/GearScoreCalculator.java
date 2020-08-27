@@ -52,7 +52,6 @@ public class GearScoreCalculator {
         if (combinedAttackPower == null || awakenedAttackPower == null || defensePower == null) {
             gearScoreLabel.setText(DEFAULT_GS);
         } else {
-
             BigDecimal gearScore = (combinedAttackPower.add(awakenedAttackPower)).divide(new BigDecimal(2)).add(defensePower);
             gearScoreLabel.setText(String.valueOf(gearScore.setScale(0, RoundingMode.UP)));
 
