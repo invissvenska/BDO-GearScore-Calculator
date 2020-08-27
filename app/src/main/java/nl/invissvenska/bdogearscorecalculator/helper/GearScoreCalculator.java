@@ -48,7 +48,7 @@ public class GearScoreCalculator {
         this.gearScoreSubLabel = gearScoreSubLabel;
     }
 
-    public void calculate() {
+    private void calculate() {
         if (combinedAttackPower == null || awakenedAttackPower == null || defensePower == null) {
             gearScoreLabel.setText(DEFAULT_GS);
         } else {

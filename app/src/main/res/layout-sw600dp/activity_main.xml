@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/dual_pane"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:baselineAligned="false"
     android:orientation="horizontal"
     android:weightSum="3">
 
-    <FrameLayout
-        android:id="@+id/calculator"
+    <fragment android:id="@+id/calculator"
+        android:name="nl.invissvenska.bdogearscorecalculator.CalculatorFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="2" />
+        android:layout_weight="2"
+        tools:layout="@layout/content_main" />
 
-    <FrameLayout
-        android:id="@+id/brackets"
+    <fragment android:id="@+id/brackets"
+        android:name="nl.invissvenska.bdogearscorecalculator.BracketFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        tools:layout="@layout/content_brackets" />
 
 </LinearLayout>
