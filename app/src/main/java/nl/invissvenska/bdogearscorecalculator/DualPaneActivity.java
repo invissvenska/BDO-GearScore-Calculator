@@ -34,7 +34,7 @@ public class DualPaneActivity extends AppCompatActivity {
         if (calculatorFragment == null || bracketFragment == null) {
             calculatorFragment = new CalculatorFragment();
             bracketFragment = new BracketFragment();
-            setFragment(calculatorFragment, R.id.nav_host_fragment, CALCULATOR);
+            setFragment(calculatorFragment, CALCULATOR);
         }
 
         BottomNavigationView navigationView = findViewById(R.id.bottom_nav);
@@ -43,21 +43,21 @@ public class DualPaneActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.action_calculator) {
-                setFragment(calculatorFragment, R.id.nav_host_fragment, CALCULATOR);
+                setFragment(calculatorFragment, CALCULATOR);
                 return true;
             }
             if (id == R.id.action_brackets) {
-                setFragment(bracketFragment, R.id.nav_host_fragment, BRACKET);
+                setFragment(bracketFragment, BRACKET);
                 return true;
             }
             return false;
         });
     }
 
-    private void setFragment(Fragment fragment, int container, String tag) {
+    private void setFragment(Fragment fragment, String tag) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(container, fragment, tag)
+                .replace(R.id.nav_host_fragment, fragment, tag)
                 .commit();
     }
 
