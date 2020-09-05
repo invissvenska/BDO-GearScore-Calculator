@@ -35,7 +35,11 @@ public class AttackPowerCalculator {
             {297, 300, 7},
             {301, 304, 7},
             {305, 308, 8},
-            {309, 999, 4},
+            {309, 315, 4},
+            {316, 322, 3},
+            {323, 329, 2},
+            {330, 339, 2},
+            {340, 999, 3},
     };
 
     public static Integer calculate(Integer attack) {

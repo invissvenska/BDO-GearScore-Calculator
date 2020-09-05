@@ -33,11 +33,6 @@ public class BracketFragment extends Fragment {
         //keep default constructor
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,16 +40,14 @@ public class BracketFragment extends Fragment {
 
         combinedApBrackets = view.findViewById(R.id.combinedApBrackets);
         defenseDpBrackets = view.findViewById(R.id.defenseDpBrackets);
-
-        setCombinedApBrackets();
-        setDefenseDpBrackets();
-
         return view;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onStart() {
+        super.onStart();
+        setCombinedApBrackets();
+        setDefenseDpBrackets();
         if (apSelectedIndex != null) {
             combinedApBrackets.scrollToPosition(apSelectedIndex);
         } else {
@@ -75,31 +68,25 @@ public class BracketFragment extends Fragment {
     }
 
     private void setCombinedApBrackets() {
-        combinedApBrackets.setOffscreenItems(ITEM_COUNT);
-        combinedApBrackets.setOverScrollEnabled(false);
-        combinedApBrackets.setSlideOnFling(true);
-        combinedApBrackets.setSlideOnFlingThreshold(FLING_THRESHOLD);
         BracketAdapter apAdapter = new BracketAdapter();
         apAdapter.addAll(AttackPowerCalculator.getBrackets());
-        combinedApBrackets.setAdapter(apAdapter);
-        combinedApBrackets.setItemTransformer(new ScaleTransformer.Builder()
-                .setMaxScale(1.2f)
-                .setMinScale(0.8f)
-                .setPivotX(Pivot.X.CENTER)
-                .setPivotY(Pivot.Y.CENTER)
-                .build()
-        );
+        setBrackets(combinedApBrackets, apAdapter);
     }
 
     private void setDefenseDpBrackets() {
-        defenseDpBrackets.setOffscreenItems(ITEM_COUNT);
-        defenseDpBrackets.setOverScrollEnabled(false);
-        defenseDpBrackets.setSlideOnFling(true);
-        defenseDpBrackets.setSlideOnFlingThreshold(FLING_THRESHOLD);
-        BracketAdapter apAdapter = new BracketAdapter();
-        apAdapter.addAll(DefensePowerCalculator.getBrackets());
-        defenseDpBrackets.setAdapter(apAdapter);
-        defenseDpBrackets.setItemTransformer(new ScaleTransformer.Builder()
+        BracketAdapter dpAdapter = new BracketAdapter();
+        dpAdapter.addAll(DefensePowerCalculator.getBrackets());
+        setBrackets(defenseDpBrackets, dpAdapter);
+    }
+
+    private void setBrackets(DiscreteScrollView scrollView, BracketAdapter adapter) {
+        scrollView.setOffscreenItems(ITEM_COUNT);
+        scrollView.setOverScrollEnabled(false);
+        scrollView.setSlideOnFling(true);
+        scrollView.setSlideOnFlingThreshold(FLING_THRESHOLD);
+        adapter.addAll(AttackPowerCalculator.getBrackets());
+        scrollView.setAdapter(adapter);
+        scrollView.setItemTransformer(new ScaleTransformer.Builder()
                 .setMaxScale(1.2f)
                 .setMinScale(0.8f)
                 .setPivotX(Pivot.X.CENTER)
