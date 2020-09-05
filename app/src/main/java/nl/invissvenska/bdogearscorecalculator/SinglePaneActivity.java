@@ -9,8 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
-
+public class SinglePaneActivity extends AppCompatActivity {
     private CalculatorFragment calculatorFragment;
     private BracketFragment bracketFragment;
 
@@ -22,18 +21,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        boolean dualPane = findViewById(R.id.dual_pane) != null;
-        if (dualPane) {
-            handleBigScreen();
-        } else {
-            handleNormalScreen();
-        }
+        handleNormalScreen();
     }
 
-    private void handleBigScreen() {
-        setFragment(new CalculatorFragment(), R.id.calculator, CALCULATOR);
-        setFragment(new BracketFragment(), R.id.brackets, BRACKET);
-    }
+
 
     private void handleNormalScreen() {
         calculatorFragment = (CalculatorFragment) getSupportFragmentManager().findFragmentByTag(CALCULATOR);

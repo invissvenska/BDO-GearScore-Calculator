@@ -27,7 +27,7 @@ public class AttackPowerCalculatorTest {
     @Test
     public void testCalculate_999_Bonus() {
         Integer input = 999;
-        Integer expected = 200;
+        Integer expected = 210;
         assertEquals(expected, AttackPowerCalculator.calculate(input));
     }
 
@@ -48,13 +48,13 @@ public class AttackPowerCalculatorTest {
     @Test
     public void testIndexByAP_999() {
         Integer input = 999;
-        Integer expected = 23;
+        Integer expected = 27;
         assertEquals(expected, AttackPowerCalculator.getIndexByAP(input));
     }
 
     @Test
     public void testGetBrackets() {
-        int expectedSize = 23;
+        int expectedSize = 27;
         Integer expectedFrom = 209;
         Integer expectedTo = 234;
         Integer expectedBonus = 10;

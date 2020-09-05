@@ -1,7 +1,5 @@
 # BDO Gear Score Calculator
 
-## What is Gear Score you say?
-
 Gear score is a numerical value based on the statistics of a player's gear. It is (supposedly) the maximum potential of a player's performance.  
 Gear Score in Black Desert Online is based on your both your Attack Power as the Awakened Attack Power and your Defense Power. You can find the values beneath your gear when pressing I.  
 

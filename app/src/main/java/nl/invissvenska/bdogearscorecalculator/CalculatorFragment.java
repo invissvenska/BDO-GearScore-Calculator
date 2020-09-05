@@ -3,11 +3,9 @@ package nl.invissvenska.bdogearscorecalculator;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,24 +30,8 @@ public class CalculatorFragment extends Fragment {
     private String awakenedAttackInputValue = "";
     private String defenseInputValue = "";
 
-    private static final String INPUT_COMBINED_ATTACK = "COMBINED_ATTACK";
-
     public CalculatorFragment() {
         //keep default constructor
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if (savedInstanceState != null) {
-            String SomeText = savedInstanceState.getString(INPUT_COMBINED_ATTACK);
-            Log.d("BDO", "restored value: " + SomeText);
-        }
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Nullable
@@ -58,15 +40,19 @@ public class CalculatorFragment extends Fragment {
         View view = inflater.inflate(R.layout.content_main, container, false);
 
         calculator = new GearScoreCalculator();
-        calculator.setGearScoreLabel((TextView) view.findViewById(R.id.gearScore));
-        calculator.setGearScoreSubLabel((TextView) view.findViewById(R.id.gearScoreSub));
+        calculator.setGearScoreLabel(view.findViewById(R.id.gearScore));
+        calculator.setGearScoreSubLabel(view.findViewById(R.id.gearScoreSub));
         combinedAttackPower = view.findViewById(R.id.combinedAttackPower);
         awakenedAttackPower = view.findViewById(R.id.awakenedAttackPower);
         defensePower = view.findViewById(R.id.defensePower);
+        return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         setInputFields();
         restoreInput();
-
-        return view;
     }
 
     private void restoreInput() {

@@ -27,7 +27,7 @@ public class DefensePowerCalculatorTest {
     @Test
     public void testCalculate_999_Bonus() {
         Integer input = 999;
-        Integer expected = 20;
+        Integer expected = 30;
         assertEquals(expected, DefensePowerCalculator.calculate(input));
     }
 
@@ -48,13 +48,13 @@ public class DefensePowerCalculatorTest {
     @Test
     public void testIndexByAP_999() {
         Integer input = 999;
-        Integer expected = 20;
+        Integer expected = 30;
         assertEquals(expected, DefensePowerCalculator.getIndexByDP(input));
     }
 
     @Test
     public void testGetBrackets() {
-        int expectedSize = 20;
+        int expectedSize = 30;
         Integer expectedFrom = 233;
         Integer expectedTo = 240;
         Integer expectedBonus = 5;
