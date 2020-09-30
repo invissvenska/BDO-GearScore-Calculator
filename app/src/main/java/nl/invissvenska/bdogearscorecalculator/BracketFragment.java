@@ -13,9 +13,12 @@ import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.Pivot;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
+import java.util.List;
+
 import nl.invissvenska.bdogearscorecalculator.helper.AttackPowerCalculator;
 import nl.invissvenska.bdogearscorecalculator.helper.DefensePowerCalculator;
 import nl.invissvenska.bdogearscorecalculator.scroll.BracketAdapter;
+import nl.invissvenska.bdogearscorecalculator.scroll.BracketItem;
 
 public class BracketFragment extends Fragment {
 
@@ -70,21 +73,21 @@ public class BracketFragment extends Fragment {
     private void setCombinedApBrackets() {
         BracketAdapter apAdapter = new BracketAdapter();
         apAdapter.addAll(AttackPowerCalculator.getBrackets());
-        setBrackets(combinedApBrackets, apAdapter);
+        setBrackets(combinedApBrackets, apAdapter, AttackPowerCalculator.getBrackets());
     }
 
     private void setDefenseDpBrackets() {
         BracketAdapter dpAdapter = new BracketAdapter();
         dpAdapter.addAll(DefensePowerCalculator.getBrackets());
-        setBrackets(defenseDpBrackets, dpAdapter);
+        setBrackets(defenseDpBrackets, dpAdapter, DefensePowerCalculator.getBrackets());
     }
 
-    private void setBrackets(DiscreteScrollView scrollView, BracketAdapter adapter) {
+    private void setBrackets(DiscreteScrollView scrollView, BracketAdapter adapter, List<BracketItem> items) {
         scrollView.setOffscreenItems(ITEM_COUNT);
         scrollView.setOverScrollEnabled(false);
         scrollView.setSlideOnFling(true);
         scrollView.setSlideOnFlingThreshold(FLING_THRESHOLD);
-        adapter.addAll(AttackPowerCalculator.getBrackets());
+        adapter.addAll(items);
         scrollView.setAdapter(adapter);
         scrollView.setItemTransformer(new ScaleTransformer.Builder()
                 .setMaxScale(1.2f)
