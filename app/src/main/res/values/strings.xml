@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BDO Gear Score Calculator</string>
+    <string name="app_name">Gear Score Calculator for BDO</string>
     <string name="gs_prefix">Your GS:</string>
     <string name="gs_calculation_sum">GS = ((Attack + awa.Attack) / 2) + Defense</string>
     <string name="input_attack_hint">Attack</string>
