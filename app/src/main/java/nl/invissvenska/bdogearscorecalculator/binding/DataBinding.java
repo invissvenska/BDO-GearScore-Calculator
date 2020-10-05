@@ -12,13 +12,13 @@ import nl.invissvenska.bdogearscorecalculator.R;
 import nl.invissvenska.bdogearscorecalculator.scroll.BracketAdapter;
 import nl.invissvenska.bdogearscorecalculator.scroll.BracketItem;
 
-public final class ScrollViewBinding {
+public final class DataBinding {
 
     private static final Integer ITEM_COUNT = 15;
     private static final Integer FLING_THRESHOLD = 1000;
     private static final Integer DEFAULT_SELECTED_INDEX = 3;
 
-    private ScrollViewBinding() {
+    private DataBinding() {
         // hide public constructor
     }
 

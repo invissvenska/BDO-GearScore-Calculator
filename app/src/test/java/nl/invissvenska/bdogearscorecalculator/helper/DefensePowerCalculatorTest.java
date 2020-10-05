@@ -10,25 +10,27 @@ import static org.junit.Assert.assertEquals;
 
 public class DefensePowerCalculatorTest {
 
+    DefensePowerCalculator testable = new DefensePowerCalculator();
+
     @Test
     public void testCalculate_99_Bonus() {
         Integer input = 99;
         Integer expected = 0;
-        assertEquals(expected, DefensePowerCalculator.calculate(input));
+        assertEquals(expected, testable.calculate(input));
     }
 
     @Test
     public void testCalculate_250_Bonus() {
         Integer input = 250;
         Integer expected = 7;
-        assertEquals(expected, DefensePowerCalculator.calculate(input));
+        assertEquals(expected, testable.calculate(input));
     }
 
     @Test
     public void testCalculate_999_Bonus() {
         Integer input = 999;
         Integer expected = 30;
-        assertEquals(expected, DefensePowerCalculator.calculate(input));
+        assertEquals(expected, testable.calculate(input));
     }
 
     @Test
@@ -61,7 +63,7 @@ public class DefensePowerCalculatorTest {
         String expectedPrefix = "+";
         String expectedSuffix = "%";
 
-        List<BracketItem> actualList = DefensePowerCalculator.getBrackets();
+        List<BracketItem> actualList = testable.getBrackets();
 
         assertEquals(expectedSize, actualList.size());
         assertEquals(expectedFrom, actualList.get(4).getFrom());
