@@ -88,7 +88,7 @@ public class CalculatorFragment extends Fragment {
             Integer value = 0;
             try {
                 value = Integer.parseInt(s.toString());
-                bonus = AttackPowerCalculator.calculate(value);
+                bonus = new AttackPowerCalculator().calculate(value);
             } catch (NumberFormatException e) {
             } finally {
                 if (Objects.requireNonNull(combinedAttackPower.getEditText()).getText().hashCode() == s.hashCode()) {
@@ -119,7 +119,7 @@ public class CalculatorFragment extends Fragment {
             int value = 0;
             try {
                 value = Integer.parseInt(s.toString());
-                bonus = DefensePowerCalculator.calculate(value);
+                bonus = new DefensePowerCalculator().calculate(value);
             } catch (NumberFormatException e) {
             } finally {
                 defenseInputValue = s.toString();

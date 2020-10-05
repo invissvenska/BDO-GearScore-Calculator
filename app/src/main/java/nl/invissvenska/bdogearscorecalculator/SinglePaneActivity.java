@@ -11,7 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class SinglePaneActivity extends AppCompatActivity {
     private CalculatorFragment calculatorFragment;
-    private BracketFragment bracketFragment;
+    private BracketContainerFragment bracketFragment;
 
     private static final String CALCULATOR = "Calculator";
     private static final String BRACKET = "Brackets";
@@ -24,15 +24,13 @@ public class SinglePaneActivity extends AppCompatActivity {
         handleNormalScreen();
     }
 
-
-
     private void handleNormalScreen() {
         calculatorFragment = (CalculatorFragment) getSupportFragmentManager().findFragmentByTag(CALCULATOR);
-        bracketFragment = (BracketFragment) getSupportFragmentManager().findFragmentByTag(BRACKET);
+        bracketFragment = (BracketContainerFragment) getSupportFragmentManager().findFragmentByTag(BRACKET);
 
         if (calculatorFragment == null || bracketFragment == null) {
             calculatorFragment = new CalculatorFragment();
-            bracketFragment = new BracketFragment();
+            bracketFragment = new BracketContainerFragment();
             setFragment(calculatorFragment, R.id.nav_host_fragment, CALCULATOR);
         }
 

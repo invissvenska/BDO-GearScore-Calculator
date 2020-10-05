@@ -5,11 +5,7 @@ import java.util.List;
 
 import nl.invissvenska.bdogearscorecalculator.scroll.BracketItem;
 
-public class AttackPowerCalculator {
-
-    private AttackPowerCalculator() {
-        //hide constructor
-    }
+public class AttackPowerCalculator extends Calculator {
 
     private static int[][] ap = {
             {0, 99, 0},
@@ -42,7 +38,8 @@ public class AttackPowerCalculator {
             {340, 999, 3},
     };
 
-    public static Integer calculate(Integer attack) {
+    @Override
+    public Integer calculate(Integer attack) {
         int currentBracket = getIndexByAP(attack);
         int currentApBonus = 0;
 
@@ -52,7 +49,8 @@ public class AttackPowerCalculator {
         return currentApBonus;
     }
 
-    public static List<BracketItem> getBrackets() {
+    @Override
+    public List<BracketItem> getBrackets() {
         List<BracketItem> brackets = new ArrayList<>();
         for (int[] ints : ap) {
             brackets.add(new BracketItem(ints[0], ints[1], ints[2], "+", ""));

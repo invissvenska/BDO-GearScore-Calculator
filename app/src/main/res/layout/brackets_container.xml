@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:baselineAligned="false"
     android:orientation="horizontal"
-    android:weightSum="6">
+    android:weightSum="2">
 
     <fragment android:id="@+id/bracketsAP"
         android:name="nl.invissvenska.bdogearscorecalculator.BracketAPFragment"
@@ -13,13 +13,6 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         tools:layout="@layout/content_brackets" />
-
-    <fragment android:id="@+id/calculator"
-        android:name="nl.invissvenska.bdogearscorecalculator.CalculatorFragment"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="4"
-        tools:layout="@layout/content_main" />
 
     <fragment android:id="@+id/bracketsDP"
         android:name="nl.invissvenska.bdogearscorecalculator.BracketDPFragment"

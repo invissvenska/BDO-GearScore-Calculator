@@ -29,9 +29,8 @@ android {
             signingConfig signingConfigs.release
         }
     }
-    compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
+    buildFeatures {
+        dataBinding true
     }
     compileOptions {
         sourceCompatibility = '1.8'
