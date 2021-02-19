@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="nl.invissvenska.bdogearscorecalculator.ui.bracket.BracketViewModel" />
+
+        <variable
+            name="adapter"
+            type="nl.invissvenska.bdogearscorecalculator.ui.adapter.BracketAdapter" />
+    </data>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:gravity="center_horizontal"
+                android:text="@string/bracket_label_attack"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+
+            <com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView
+                android:id="@+id/combinedApBrackets"
+                app:adapter="@{adapter}"
+                app:adapterBracketList="@{vm.pokemonListLiveData}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:snapEnabled="true"
+                app:snapGravity="top"
+                app:snapMaxFlingSizeFraction="20"
+                app:snapScrollMsPerInch="50"
+                tools:listitem="@layout/item_layout" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginBottom="@dimen/small_margin"
+                android:gravity="center_horizontal"
+                android:text="@string/bracket_label_defense"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+
+            <com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView
+                android:id="@+id/defenseDpBrackets"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:snapEnabled="true"
+                app:snapGravity="top"
+                app:snapMaxFlingSizeFraction="20"
+                app:snapScrollMsPerInch="50"
+                tools:listitem="@layout/item_layout" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

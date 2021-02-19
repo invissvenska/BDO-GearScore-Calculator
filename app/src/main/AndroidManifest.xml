@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="nl.invissvenska.bdogearscorecalculator">
 
     <application
+        android:name=".BDOGearScoreCalculatorApp"
         android:allowBackup="true"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
@@ -10,25 +12,45 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--        <activity-->
+        <!--            android:name=".DualPaneActivity"-->
+        <!--            android:screenOrientation="portrait"-->
+        <!--            android:theme="@style/AppTheme.NoActionBar">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.MAIN" />-->
+        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
+        <!--        <activity-->
+        <!--            android:name=".SinglePaneActivity"-->
+        <!--            android:label="@string/app_name"-->
+        <!--            android:parentActivityName=".DualPaneActivity"-->
+        <!--            android:screenOrientation="portrait"-->
+        <!--            android:theme="@style/AppTheme.NoActionBar">-->
+        <!--            <meta-data-->
+        <!--                android:name="android.support.PARENT_ACTIVITY"-->
+        <!--                android:value=".DualPaneActivity" />-->
+        <!--        </activity>-->
         <activity
-            android:name=".DualPaneActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".ui.bracket.BracketActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SinglePaneActivity"
-            android:label="@string/app_name"
-            android:parentActivityName=".DualPaneActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="nl.invissvenska.bdogearscorecalculator.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".DualPaneActivity" />
-        </activity>
+                android:name="nl.invissvenska.bdogearscorecalculator.initializer.TimberInitializer"
+                android:value="androidx.startup" />
+        </provider>
     </application>
 
 </manifest>
