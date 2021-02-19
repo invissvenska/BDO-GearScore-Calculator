@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
@@ -22,11 +23,16 @@
             android:text="@string/bracket_label_attack"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
-        <com.yarolegovich.discretescrollview.DiscreteScrollView
+        <com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView
             android:id="@+id/combinedApBrackets"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:dsv_orientation="vertical" />
+            android:orientation="vertical"
+            app:snapEnabled="true"
+            app:snapGravity="top"
+            app:snapMaxFlingSizeFraction="20"
+            app:snapScrollMsPerInch="50"
+            tools:listitem="@layout/item_layout" />
 
     </LinearLayout>
 
@@ -46,11 +52,17 @@
             android:text="@string/bracket_label_defense"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
-        <com.yarolegovich.discretescrollview.DiscreteScrollView
+        <com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView
             android:id="@+id/defenseDpBrackets"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:dsv_orientation="vertical" />
+            android:orientation="vertical"
+            app:snapEnabled="true"
+            app:snapGravity="top"
+            app:snapMaxFlingSizeFraction="20"
+            app:snapScrollMsPerInch="50"
+            tools:listitem="@layout/item_layout" />
+
     </LinearLayout>
 
 </LinearLayout>

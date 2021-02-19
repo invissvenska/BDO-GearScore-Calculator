@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.yarolegovich.discretescrollview.DiscreteScrollView;
-import com.yarolegovich.discretescrollview.transform.Pivot;
-import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
+import com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView;
 
 import java.util.List;
 
@@ -22,12 +22,10 @@ import nl.invissvenska.bdogearscorecalculator.scroll.BracketItem;
 
 public class BracketFragment extends Fragment {
 
-    private static final Integer ITEM_COUNT = 15;
-    private static final Integer FLING_THRESHOLD = 1000;
-    private static final Integer DEFAULT_SELECTED_INDEX = 3;
+    private static final Integer DEFAULT_SELECTED_INDEX = 0;
 
-    private DiscreteScrollView combinedApBrackets;
-    private DiscreteScrollView defenseDpBrackets;
+    private GravitySnapRecyclerView combinedApBrackets;
+    private GravitySnapRecyclerView defenseDpBrackets;
 
     private Integer apSelectedIndex;
     private Integer dpSelectedIndex;
@@ -66,8 +64,8 @@ public class BracketFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        apSelectedIndex = combinedApBrackets.getCurrentItem();
-        dpSelectedIndex = defenseDpBrackets.getCurrentItem();
+        apSelectedIndex = combinedApBrackets.getCurrentSnappedPosition();
+        dpSelectedIndex = defenseDpBrackets.getCurrentSnappedPosition();
     }
 
     private void setCombinedApBrackets() {
@@ -82,19 +80,10 @@ public class BracketFragment extends Fragment {
         setBrackets(defenseDpBrackets, dpAdapter, DefensePowerCalculator.getBrackets());
     }
 
-    private void setBrackets(DiscreteScrollView scrollView, BracketAdapter adapter, List<BracketItem> items) {
-        scrollView.setOffscreenItems(ITEM_COUNT);
-        scrollView.setOverScrollEnabled(false);
-        scrollView.setSlideOnFling(true);
-        scrollView.setSlideOnFlingThreshold(FLING_THRESHOLD);
+    private void setBrackets(GravitySnapRecyclerView scrollView, BracketAdapter adapter, List<BracketItem> items) {
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        scrollView.setLayoutManager(layoutManager);
         adapter.addAll(items);
         scrollView.setAdapter(adapter);
-        scrollView.setItemTransformer(new ScaleTransformer.Builder()
-                .setMaxScale(1.2f)
-                .setMinScale(0.8f)
-                .setPivotX(Pivot.X.CENTER)
-                .setPivotY(Pivot.Y.CENTER)
-                .build()
-        );
     }
 }
