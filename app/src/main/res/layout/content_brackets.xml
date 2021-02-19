@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="adapter"
             type="nl.invissvenska.bdogearscorecalculator.scroll.BracketAdapter" />
@@ -21,16 +23,17 @@
             android:layout_marginBottom="@dimen/small_margin"
             android:gravity="center_horizontal"
             android:text="@{adapter.getTitle()}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            tools:text="AP" />
 
         <com.yarolegovich.discretescrollview.DiscreteScrollView
             android:id="@+id/combinedBrackets"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:adapter="@{adapter}"
-            app:dsv_orientation="vertical" />
+            app:dsv_orientation="vertical"
+            tools:listitem="@layout/item_bracket" />
 
     </LinearLayout>
-
 
 </layout>
