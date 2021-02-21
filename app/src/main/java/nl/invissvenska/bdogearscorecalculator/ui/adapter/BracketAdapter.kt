@@ -11,7 +11,6 @@ import nl.invissvenska.bdogearscorecalculator.model.Bracket
 class BracketAdapter : RecyclerView.Adapter<BracketAdapter.BracketViewHolder>() {
 
     private val items: MutableList<Bracket> = mutableListOf()
-    private var onClickedAt = 0L
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BracketViewHolder {
         val inflater = LayoutInflater.from(parent.context)

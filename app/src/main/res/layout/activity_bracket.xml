@@ -9,8 +9,20 @@
             type="nl.invissvenska.bdogearscorecalculator.ui.bracket.BracketViewModel" />
 
         <variable
-            name="adapter"
+            name="attackAdapter"
             type="nl.invissvenska.bdogearscorecalculator.ui.adapter.BracketAdapter" />
+
+        <variable
+            name="defenseAdapter"
+            type="nl.invissvenska.bdogearscorecalculator.ui.adapter.BracketAdapter" />
+
+        <variable
+            name="attackBracket"
+            type="nl.invissvenska.bdogearscorecalculator.util.AttackPowerCalculator" />
+
+        <variable
+            name="defenseBracket"
+            type="nl.invissvenska.bdogearscorecalculator.util.DefensePowerCalculator" />
     </data>
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
@@ -35,12 +47,12 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
             <com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView
-                android:id="@+id/combinedApBrackets"
-                app:adapter="@{adapter}"
-                app:adapterBracketList="@{vm.pokemonListLiveData}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                app:adapter="@{attackAdapter}"
+                app:adapterBracketList="@{attackBracket.brackets}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:snapEnabled="true"
                 app:snapGravity="top"
                 app:snapMaxFlingSizeFraction="20"
@@ -65,10 +77,12 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
             <com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView
-                android:id="@+id/defenseDpBrackets"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                app:adapter="@{defenseAdapter}"
+                app:adapterBracketList="@{defenseBracket.brackets}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:snapEnabled="true"
                 app:snapGravity="top"
                 app:snapMaxFlingSizeFraction="20"

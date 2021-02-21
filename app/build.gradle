@@ -103,11 +103,8 @@ dependencies {
     // debugging
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
-
-
+    implementation 'org.jetbrains.kotlinx:kotlinx-collections-immutable-jvm:0.3.3'
     implementation 'com.github.skydoves:whatif:1.0.6'
-
-//    implementation 'androidx.appcompat:appcompat:1.2.0'
 
 
 

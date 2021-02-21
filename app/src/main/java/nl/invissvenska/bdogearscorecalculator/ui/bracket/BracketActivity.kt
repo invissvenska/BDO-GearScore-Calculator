@@ -7,6 +7,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import nl.invissvenska.bdogearscorecalculator.R
 import nl.invissvenska.bdogearscorecalculator.base.DataBindingActivity
 import nl.invissvenska.bdogearscorecalculator.databinding.ActivityBracketBinding
+import nl.invissvenska.bdogearscorecalculator.ui.adapter.BracketAdapter
+import nl.invissvenska.bdogearscorecalculator.util.AttackPowerCalculator
+import nl.invissvenska.bdogearscorecalculator.util.DefensePowerCalculator
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -19,12 +22,13 @@ class BracketActivity : DataBindingActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Timber.i("ID to show in view")
         binding.apply {
             lifecycleOwner = this@BracketActivity
-            vm = viewModel.apply {
-                // setVideoId(youTubeId)
-            }
+            attackAdapter = BracketAdapter()
+            defenseAdapter = BracketAdapter()
+            attackBracket = AttackPowerCalculator
+            defenseBracket = DefensePowerCalculator
+            vm = viewModel
         }
     }
 }

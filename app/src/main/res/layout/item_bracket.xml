@@ -13,7 +13,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:orientation="vertical">
 
         <TextView
@@ -23,7 +23,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/medium_margin"
             android:gravity="center"
-            android:text="@{bracket.getFrom()}"
+            android:text="@{bracket.range}"
             android:textColor="@color/colorAccent"
             android:textSize="14sp"
             tools:text="100 - 200" />
@@ -35,7 +35,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/medium_margin"
             android:gravity="center"
-            android:text="@{bracket.getBonus()}"
+            android:text="@{bracket.bonusValue}"
             android:textColor="@color/colorPrimaryText"
             android:textSize="16sp"
             android:textStyle="bold"
