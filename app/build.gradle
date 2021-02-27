@@ -103,15 +103,9 @@ dependencies {
     // debugging
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
-    implementation 'org.jetbrains.kotlinx:kotlinx-collections-immutable-jvm:0.3.3'
     implementation 'com.github.skydoves:whatif:1.0.6'
-
-
 
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-}
-repositories {
-    mavenCentral()
 }
