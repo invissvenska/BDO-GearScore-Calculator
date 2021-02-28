@@ -1,6 +1,9 @@
 package nl.invissvenska.bdogearscorecalculator.ui.bracket
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,9 +21,11 @@ class BracketActivity : DataBindingFragment() {
     val viewModel: BracketViewModel by viewModels()
     private val binding: ActivityBracketBinding by binding(R.layout.activity_bracket)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View {
         binding.apply {
             lifecycleOwner = this@BracketActivity
             attackAdapter = BracketAdapter()
@@ -29,5 +34,7 @@ class BracketActivity : DataBindingFragment() {
             defenseBracket = DefensePowerCalculator
             vm = viewModel
         }
+
+        return binding.root
     }
 }

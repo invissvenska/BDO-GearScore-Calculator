@@ -1,32 +1,22 @@
 package nl.invissvenska.bdogearscorecalculator.ui.main
 
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.annotation.VisibleForTesting
-import androidx.fragment.app.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import nl.invissvenska.bdogearscorecalculator.R
-import nl.invissvenska.bdogearscorecalculator.base.DataBindingActivity
-import nl.invissvenska.bdogearscorecalculator.databinding.ActivityBracketBinding
-import nl.invissvenska.bdogearscorecalculator.databinding.ActivityMainsBinding
-import nl.invissvenska.bdogearscorecalculator.ui.adapter.BracketAdapter
-import nl.invissvenska.bdogearscorecalculator.ui.bracket.BracketViewModel
-import nl.invissvenska.bdogearscorecalculator.util.AttackPowerCalculator
-import nl.invissvenska.bdogearscorecalculator.util.DefensePowerCalculator
 
 @AndroidEntryPoint
-class MainActivity : DataBindingActivity() {
-
-    @VisibleForTesting
-    val viewModel: MainViewModel by viewModels()
-    private val binding: ActivityMainsBinding by binding(R.layout.activity_mains)
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_mains)
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        binding.apply {
-            lifecycleOwner = this@MainActivity
-            vm = viewModel
-        }
+        val navController = findNavController(R.id.nav_host_fragment)
+        navView.setupWithNavController(navController)
     }
 }

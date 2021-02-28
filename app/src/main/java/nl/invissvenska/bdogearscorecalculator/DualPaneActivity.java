@@ -28,30 +28,30 @@ public class DualPaneActivity extends AppCompatActivity {
     }
 
     private void handleNormalScreen() {
-        calculatorFragment = (CalculatorFragment) getSupportFragmentManager().findFragmentByTag(CALCULATOR);
-        bracketFragment = (BracketFragment) getSupportFragmentManager().findFragmentByTag(BRACKET);
-
-        if (calculatorFragment == null || bracketFragment == null) {
-            calculatorFragment = new CalculatorFragment();
-            bracketFragment = new BracketFragment();
-            setFragment(calculatorFragment, CALCULATOR);
-        }
-
-        BottomNavigationView navigationView = findViewById(R.id.bottom_nav);
-        navigationView.setSelectedItemId(R.id.action_calculator);
-        navigationView.setOnNavigationItemSelectedListener((@NonNull MenuItem item) -> {
-            int id = item.getItemId();
-
-            if (id == R.id.action_calculator) {
-                setFragment(calculatorFragment, CALCULATOR);
-                return true;
-            }
-            if (id == R.id.action_brackets) {
-                setFragment(bracketFragment, BRACKET);
-                return true;
-            }
-            return false;
-        });
+//        calculatorFragment = (CalculatorFragment) getSupportFragmentManager().findFragmentByTag(CALCULATOR);
+//        bracketFragment = (BracketFragment) getSupportFragmentManager().findFragmentByTag(BRACKET);
+//
+//        if (calculatorFragment == null || bracketFragment == null) {
+//            calculatorFragment = new CalculatorFragment();
+//            bracketFragment = new BracketFragment();
+//            setFragment(calculatorFragment, CALCULATOR);
+//        }
+//
+//        BottomNavigationView navigationView = findViewById(R.id.bottom_nav);
+//        navigationView.setSelectedItemId(R.id.action_calculator);
+//        navigationView.setOnNavigationItemSelectedListener((@NonNull MenuItem item) -> {
+//            int id = item.getItemId();
+//
+//            if (id == R.id.action_calculator) {
+//                setFragment(calculatorFragment, CALCULATOR);
+//                return true;
+//            }
+//            if (id == R.id.action_brackets) {
+//                setFragment(bracketFragment, BRACKET);
+//                return true;
+//            }
+//            return false;
+//        });
     }
 
     private void setFragment(Fragment fragment, String tag) {
