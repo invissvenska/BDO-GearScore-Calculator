@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/calculator"
-        android:name="nl.invissvenska.bdogearscorecalculator.ui.calculator.CalculatorActivity"
+        android:name="nl.invissvenska.bdogearscorecalculator.ui.calculator.CalculatorFragment"
         android:label="Calculator"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_calculator" />
 
     <fragment
         android:id="@+id/bracket"
-        android:name="nl.invissvenska.bdogearscorecalculator.ui.bracket.BracketActivity"
+        android:name="nl.invissvenska.bdogearscorecalculator.ui.bracket.BracketFragment"
         android:label="Brackets"
-        tools:layout="@layout/activity_bracket" />
+        tools:layout="@layout/fragment_bracket" />
 
 </navigation>

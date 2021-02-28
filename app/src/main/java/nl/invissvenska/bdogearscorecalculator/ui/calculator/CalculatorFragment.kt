@@ -1,0 +1,39 @@
+package nl.invissvenska.bdogearscorecalculator.ui.calculator
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.annotation.VisibleForTesting
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
+import nl.invissvenska.bdogearscorecalculator.R
+import nl.invissvenska.bdogearscorecalculator.base.DataBindingFragment
+import nl.invissvenska.bdogearscorecalculator.databinding.FragmentCalculatorBinding
+import nl.invissvenska.bdogearscorecalculator.ui.adapter.BracketAdapter
+import nl.invissvenska.bdogearscorecalculator.util.AttackPowerCalculator
+import nl.invissvenska.bdogearscorecalculator.util.DefensePowerCalculator
+
+@AndroidEntryPoint
+class CalculatorFragment : DataBindingFragment() {
+
+    @VisibleForTesting
+    val viewModel: CalculatorViewModel by viewModels()
+    private val binding: FragmentCalculatorBinding by binding(R.layout.fragment_calculator)
+
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View {
+        binding.apply {
+            lifecycleOwner = this@CalculatorFragment
+            attackAdapter = BracketAdapter()
+            defenseAdapter = BracketAdapter()
+            attackBracket = AttackPowerCalculator
+            defenseBracket = DefensePowerCalculator
+        }
+
+        return binding.root
+    }
+}
