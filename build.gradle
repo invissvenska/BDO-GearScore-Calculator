@@ -2,6 +2,7 @@
 buildscript {
     repositories {
         google()
+        gradlePluginPortal()
         mavenCentral()
     }
     dependencies {
@@ -15,6 +16,7 @@ buildscript {
 allprojects {
     repositories {
         google()
+        gradlePluginPortal()
         mavenCentral()
     }
 }
